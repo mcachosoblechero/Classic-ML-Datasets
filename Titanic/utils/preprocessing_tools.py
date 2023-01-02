@@ -16,6 +16,10 @@ def titanic_feature_extraction(df):
     df['hasCabin'] = df.Cabin.notnull().apply(lambda x: 1 if x==True else 0)
     # Extract the passenger cabin letter
     df['cabinLetter'] = df.loc[df.Cabin.notnull()].Cabin.str[0]
+    df['cabinLetter'] = df.cabinLetter.fillna(value="No Cabin")
     # Extract the number of cabins
     df['numCabins'] = df.loc[df.Cabin.notnull()].Cabin.str.split(" ").apply(len)
+    df['numCabins'] = df.numCabins.fillna(value=0)
+    # Determine the passenger is a female
+    df['isFemale'] = df.Sex.apply(lambda x: 1 if x=="female" else 0)
     return df
