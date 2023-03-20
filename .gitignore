@@ -131,5 +131,6 @@ dmypy.json
 # Ignore mac specific files
 .DS_Store
 
-# Ignore CSV files
+# Ignore CSV & KV files
 *.csv
+*.kv
